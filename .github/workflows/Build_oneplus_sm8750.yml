@@ -426,14 +426,6 @@ jobs:
               echo "❌ 未匹配到补丁，风驰补丁暂未支持该机型"
               exit 11
             fi
-          else
-            echo "未启用风驰，则需应用OGKI转换GKI补丁"
-            cd kernel_workspace/common
-            sed -i '1iobj-y += hmbird_patch.o' drivers/Makefile
-            cp "${GITHUB_WORKSPACE}/patch/hmbird_patch.patch" ./hmbird_patch.patch
-            echo "正在打OGKI转换GKI补丁"
-            patch -p1 -F 3 < hmbird_patch.patch
-            echo "OGKI转换GKI_patch完成"
           fi
 
       - name: 🔧 Add Re-Kernel Support (添加 Re-Kernel 支持)
